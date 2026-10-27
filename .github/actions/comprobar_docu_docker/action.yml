@@ -1,0 +1,11 @@
+name: Comprobar docs (Docker)
+description: Comprueba que existen README.md, LICENSE y CONTRIBUTING.md dentro de un contenedor
+inputs:
+  files:
+    description: Archivos separados por comas
+    default: "README.md,LICENSE,CONTRIBUTING.md"
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.files }}
