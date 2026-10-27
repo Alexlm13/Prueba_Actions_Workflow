@@ -1,0 +1,9 @@
+name: Comprobar docs (JavaScript)
+description: Comprueba que existen README.md, LICENSE y CONTRIBUTING.md con Node.js
+inputs:
+  files:
+    description: Archivos separados por comas
+    default: "README.md,LICENSE,CONTRIBUTING.md"
+runs:
+  using: node20
+  main: index.js
