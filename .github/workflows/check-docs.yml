@@ -22,3 +22,12 @@ jobs:
 
       - name: Ejecutar acción JavaScript
         uses: ./.github/actions/comprobar_docu_js
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar acción Docker
+        uses: ./.github/actions/comprobar_docu_docker
