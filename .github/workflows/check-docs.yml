@@ -1,0 +1,15 @@
+name: Comprobar documentación
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  composite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar acción compuesta
+        uses: ./.github/actions/comprobar-docu-composite
