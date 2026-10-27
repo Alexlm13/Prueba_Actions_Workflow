@@ -1,0 +1,24 @@
+name: Comprobar docs (composite)
+description: Comprueba que existen README.md, LICENSE y CONTRIBUTING.md
+inputs:
+  files:
+    description: Archivos separados por comas
+    default: "README.md,LICENSE,CONTRIBUTING.md"
+runs:
+  using: composite
+  steps:
+    - name: Comprobar archivos
+      shell: bash
+      run: |
+        missing=0
+        IFS=',' read -ra LISTA <<< "${{ inputs.files }}"
+        for f in "${LISTA[@]}"; do
+          f=$(echo "$f" | xargs)
+          if [ -f "$f" ]; then
+            echo "✅ $f"
+          else
+            echo "❌ $f"
+            missing=1
+          fi
+        done
+        exit $missing
